@@ -1,0 +1,23 @@
+{
+  "Routes": [
+    {
+      "UseServiceDiscovery": true,
+      "DownstreamPathTemplate": "/WeatherForecast",
+      "DownstreamScheme": "https",
+      "ServiceName": "Application",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "UpstreamPathTemplate": "/v1/WeatherForecast",
+      "UpstreamHttpMethod": [ "Get", "OPTIONS" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "PollConsul",
+      "PollingInterval": 100
+    }
+  }
+}
